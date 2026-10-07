@@ -70,12 +70,28 @@ set_library_paths() {
 }
 
 #---------------------------
+# set_cleanup_build
+#---------------------------
+set_cleanup_build() {
+  echo "Start of set_cleanup_build..."
+
+  rm -r -f "$PROJECT_PROD_DIR"
+  if ! [ -d "$PROJECT_PROD_DIR" ]; then
+    mkdir "$PROJECT_PROD_DIR"
+  fi
+
+  echo "Erzeugtes Produktionsbuild-Verzeichnis: $PROJECT_PROD_DIR"
+}
+
+
+#---------------------------
 # Main-Programm
 #---------------------------
 echo "Start of main..."
 set_project_paths
 set_source_code_paths
 set_library_paths
+set_cleanup_build
 echo "End of main..."
 
 
